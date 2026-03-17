@@ -1,0 +1,498 @@
+:root{
+  /* light / white color scheme */
+  --bg:#f7f8fb;
+  --card:#ffffff;
+  --accent:#0b76ff;
+  --accent-2:#06b6d4;
+  --muted:#6b7280;
+  --radius:14px;
+  --glass: rgba(0,0,0,0.04);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  /* photographic background using provided asset */
+  background-image: url('/IMG_1204.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--bg);
+  font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding:20px;
+}
+
+/* top banner */
+.top-banner{
+  position:fixed;
+  top:12px;
+  left:50%;
+  transform:translateX(-50%);
+  /* centered cyan radial gradient fading into a standard blue (no photo) */
+  background-image: radial-gradient(circle at center, rgba(6,182,212,0.95) 0%, rgba(6,182,212,0.75) 20%, rgba(11,118,255,0.95) 70%);
+  background-color: rgba(11,118,255,0.95);
+  color: #ffffff;
+  padding:10px 16px;
+  border-radius:6px; /* tightened to 6px per request */
+  border:1px solid #000; /* black stroke around the banner */
+  box-shadow:0 12px 34px rgba(2,6,23,0.22);
+  z-index:60;
+  min-width:220px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.top-banner.hidden{display:none}
+.hidden{display:none}
+.banner-content{display:flex;gap:10px;align-items:center}
+.banner-label{opacity:0.95;font-size:13px}
+/* styled "Signed in as" pill: 6px rounding, blue fill, black stroke */
+.banner-id{
+  font-size:14px;
+  letter-spacing:0.6px;
+  font-weight:800;
+  background: #0b76ff; /* blue fill */
+  color: #ffffff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #000; /* black stroke */
+  display: inline-block;
+  line-height: 1;
+}
+
+/* card */
+.card{
+  width:100%;
+  max-width:460px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.85), var(--glass));
+  border-radius:var(--radius);
+  padding:28px;
+  box-shadow:0 18px 48px rgba(9,18,35,0.08);
+  position:relative;
+  overflow:hidden;
+  min-height:320px;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  backdrop-filter: blur(6px);
+}
+
+/* logo in the top-right corner */
+.logo-wrap{
+  position:absolute;
+  top:12px;
+  right:12px;
+  width:56px;
+  height:56px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  pointer-events:none;
+}
+.logo{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  border-radius:10px;
+  opacity:0.98;
+  transform:rotate(-4deg);
+}
+
+/* title */
+.title{
+  margin:0;
+  font-size:20px;
+  font-weight:700;
+  color:#0f172a;
+  padding-top:6px;
+}
+
+/* form */
+.login-form{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin-top:4px;
+  flex:1;
+  justify-content:flex-start;
+}
+
+.field input{
+  width:100%;
+  height:52px;
+  padding:12px 14px;
+  font-size:16px;
+  border:1px solid #eef2ff;
+  border-radius:12px;
+  outline:none;
+  background:linear-gradient(180deg,#fff,#fbfdff);
+  transition:box-shadow .12s, border-color .12s, transform .06s;
+}
+
+.field input:focus{
+  border-color:var(--accent);
+  box-shadow:0 8px 28px rgba(11,108,255,0.12);
+  transform:translateY(-1px);
+}
+
+.submit{
+  margin-top:6px;
+  height:48px;
+  background:transparent;
+  color:var(--btn-text-color, #071126);
+  border:0;
+  border-radius:0;
+  font-weight:800;
+  font-size:16px;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  box-shadow:0 8px 24px rgba(11,118,255,0.12);
+}
+
+.submit:active{transform:translateY(1px)}
+.submit:focus{outline: none}
+
+/* reward panel */
+.reward-panel{
+  margin-top:10px;
+  padding:12px;
+  border-radius:12px;
+  background:linear-gradient(180deg,#ffffff,#fbfdff);
+  border:1px solid #eef6ff;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.reward-panel.hidden{display:none}
+.reward-title{font-weight:800;color:#0f172a}
+.reward-area{display:flex;gap:10px;align-items:center;justify-content:space-between}
+.reward-result{
+  flex:1;
+  height:54px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:12px;
+  background:#f8fafc;
+  color:#111827;
+  font-weight:800;
+  letter-spacing:0.6px;
+  box-shadow:inset 0 -2px 8px rgba(2,6,23,0.03);
+}
+.reward-result.empty{color:#6b7280;font-weight:700}
+
+/* specific reward styles */
+.reward-sirius{
+  background:linear-gradient(90deg,#f59e0b,#fbbf24);
+  color:#111827;
+  box-shadow:0 8px 20px rgba(245,158,11,0.12);
+}
+.reward-spike{
+  background:linear-gradient(90deg,#10b981,#34d399);
+  color:#052e13;
+  box-shadow:0 8px 20px rgba(16,185,129,0.12);
+}
+
+/* image-backed button used across the UI (applied to all native buttons for consistent styling) */
+button, .image-btn{
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  height:46px;
+  min-width:120px;
+  padding:0 14px;
+  border:0;
+  background:transparent;
+  border-radius:0; /* square corners per request */
+  cursor:pointer;
+  overflow:hidden;
+  box-shadow:0 8px 20px rgba(6,118,255,0.06);
+  font-family:inherit;
+  font-weight:800;
+  color:inherit;
+}
+
+/* smaller variant used by some elements */
+button.small, .image-btn.small{ height:44px; min-width:100px; }
+
+/* button disabled states */
+button:disabled, .image-btn:disabled{
+  opacity:0.6;
+  cursor:default;
+  box-shadow:none;
+  transform:none;
+  pointer-events:none;
+}
+
+/* button background image (optional inner image for graphic buttons) */
+.image-btn{
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  height:46px;
+  min-width:120px;
+  padding:0 14px;
+  border:0;
+  background:transparent;
+  border-radius:0; /* square corners per request */
+  cursor:pointer;
+  overflow:hidden;
+  box-shadow:0 8px 20px rgba(6,118,255,0.06);
+  font-family:inherit;
+  font-weight:800;
+  color:inherit;
+}
+
+/* ensure the image is constrained inside the button border and does not bleed out */
+.image-btn .btn-img,
+button .btn-img{
+  position:absolute;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+  filter:contrast(1.04) saturate(1.06);
+  transform:translateZ(0) scale(1);
+  pointer-events:none;
+  display:block;
+}
+
+/* visible label on top of the image */
+.image-btn .btn-text,
+button .btn-text{
+  position:relative;
+  z-index:2;
+  font-weight:800;
+  color:#071126;
+  text-transform:uppercase;
+  letter-spacing:0.6px;
+  font-size:13px;
+  pointer-events:none;
+  text-shadow:0 1px 0 rgba(255,255,255,0.6);
+}
+
+/* preserve older roll-btn/claim-btn sizing where used */
+.roll-btn{ min-width:120px; height:48px; border-radius:12px; font-weight:800; }
+.claim-btn{ min-width:120px; height:44px; border-radius:0; font-weight:800; }
+
+/* hover/active micro-interactions */
+button:hover, .image-btn:hover{ transform:translateY(-2px); box-shadow:0 14px 30px rgba(6,118,255,0.08); }
+button:active, .image-btn:active{ transform:translateY(0); }
+
+/* disabled state for image buttons (keeps compatibility with attribute selector) */
+.image-btn[disabled]{ opacity:0.6; pointer-events:none; }
+
+/* ensure previously defined roll-btn block removed */
+
+.roll-btn:hover{ transform:translateY(-2px); box-shadow:0 18px 36px rgba(6,118,255,0.14); }
+.roll-btn:disabled{ opacity:0.6; transform:none; box-shadow:none; cursor:default; }
+
+/* responsive tweaks */
+@media (max-width:420px){
+  .card{padding:18px; border-radius:12px; min-height:300px}
+  .logo-wrap{width:48px;height:48px;top:10px;right:10px}
+  .top-banner{top:8px;left:50%}
+}
+
+/* post-login gallery */
+.post-login{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  padding:80px 20px 28px;
+  background:transparent;
+  gap:18px;
+}
+.gallery{
+  display:flex;
+  gap:14px;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+  max-width:880px;
+  width:100%;
+}
+.card-tile{
+  width:calc(50% - 14px);
+  min-width:160px;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(2,6,23,0.08);
+  background:#fff;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  padding:12px;
+}
+.card-tile img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+.tile-label{
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:0.8px;
+  padding:6px 10px;
+  border-radius:8px;
+  font-size:14px;
+}
+.tile-sirius{ background:linear-gradient(90deg,#f59e0b,#fbbf24); color:#111827; }
+.tile-spike{ background:linear-gradient(90deg,#10b981,#34d399); color:#052e13; }
+
+/* center the reward row */
+.reward-row{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  justify-content:center;
+  margin-top:6px;
+  flex-wrap:wrap;
+}
+
+/* unified large display for the rolled character */
+.result-stage{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:12px;
+  margin-bottom:8px;
+}
+.result-image{
+  width:220px;
+  height:220px;
+  border-radius:18px;
+  object-fit:contain;
+  background:linear-gradient(180deg,#f8fafc,#ffffff);
+  box-shadow:0 18px 40px rgba(2,6,23,0.08);
+  display:block;
+  transition:transform .18s, opacity .18s;
+}
+.result-image.hidden{display:none; opacity:0; transform:scale(0.98)}
+.label-display{
+  padding:8px 14px;
+  border-radius:999px;
+  font-weight:900;
+  letter-spacing:0.8px;
+  font-size:14px;
+}
+.label-sirius{ background:linear-gradient(90deg,#f59e0b,#fbbf24); color:#111827; box-shadow:0 8px 20px rgba(245,158,11,0.08); }
+.label-spike{ background:linear-gradient(90deg,#10b981,#34d399); color:#052e13; box-shadow:0 8px 20px rgba(16,185,129,0.08); }
+
+.reward-display{
+  min-width:160px;
+  height:56px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:12px;
+  font-weight:800;
+  background:#f3f4f6;
+  box-shadow:inset 0 -2px 10px rgba(2,6,23,0.02);
+}
+.roll-btn{
+  min-width:120px;
+  height:48px;
+  border-radius:12px;
+  font-weight:800;
+}
+
+/* PDF footer shown on post-login screen */
+.pdf-footer{
+  position:fixed;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:10px;
+  background:linear-gradient(90deg,#0b1726,var(--accent));
+  color:#fff;
+  padding:8px 12px;
+  border-radius:12px;
+  box-shadow:0 12px 34px rgba(2,6,23,0.18);
+  z-index:80;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:700;
+  min-width:160px;
+  justify-content:center;
+}
+.pdf-footer .pdf-link{
+  color:#fff;
+  text-decoration:none;
+  font-weight:800;
+  padding:6px 10px;
+  border-radius:8px;
+  background:rgba(255,255,255,0.06);
+}
+@media (max-width:420px){
+  .pdf-footer{bottom:8px; padding:7px 10px; min-width:140px}
+}
+
+/* Claim button and notification */
+.claim-btn{
+  min-width:120px;
+  height:44px;
+  border-radius:0;
+  font-weight:800;
+  /* remove blue gradient so the image-backed button or transparent styling shows through */
+  background: transparent;
+  /* inherit color so image-backed buttons keep their visible label color */
+  color: inherit;
+  border:0;
+  cursor:pointer;
+  /* remove the heavy blue shadow to avoid blue tint */
+  box-shadow: none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+.claim-btn.hidden{ display:none; opacity:0; transform:translateY(6px); }
+
+#claim-msg{
+  position:fixed;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:64px;
+  background:rgba(16,185,129,0.98);
+  color:white;
+  padding:10px 14px;
+  border-radius:10px;
+  box-shadow:0 10px 30px rgba(6,118,255,0.12);
+  z-index:90;
+  font-weight:800;
+  min-width:160px;
+  text-align:center;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .18s, transform .18s;
+}
+#claim-msg.show{
+  opacity:1;
+  transform:translateX(-50%) translateY(-6px);
+  pointer-events:auto;
+}
